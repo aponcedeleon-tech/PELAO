@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumina Studios</title>
+
+<style>
+:root{
+  --azul:#1F3C88;
+  --violeta:#5B2D8B;
+  --negro:#121212;
+  --blanco:#FFFFFF;
+  --amarillo:#F5C542;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior:smooth;
+}
+
+body{
+  background:linear-gradient(180deg, #121212, #0e0e1a);
+  color:var(--blanco);
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:1000;
+  background:rgba(18,18,18,0.85);
+  backdrop-filter:blur(8px);
+}
+
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem 2rem;
+}
+
+nav h1{
+  color:var(--amarillo);
+  letter-spacing:2px;
+  text-shadow:0 0 10px var(--amarillo);
+}
+
+nav ul{
+  display:flex;
+  list-style:none;
+  gap:1.5rem;
+}
+
+nav a{
+  color:var(--blanco);
+  text-decoration:none;
+  position:relative;
+}
+
+nav a::after{
+  content:'';
+  position:absolute;
+  width:0;
+  height:2px;
+  background:var(--amarillo);
+  left:0;
+  bottom:-4px;
+  transition:.3s;
+}
+
+nav a:hover::after{
+  width:100%;
+}
+
+/* SECCIONES */
+section{
+  padding:6rem 2rem;
+  max-width:1200px;
+  margin:auto;
+}
+
+h2{
+  color:var(--amarillo);
+  margin-bottom:1rem;
+  text-shadow:0 0 8px var(--amarillo);
+}
+
+p{
+  line-height:1.8;
+  opacity:.95;
+  margin-bottom:1rem;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+  background:
+    radial-gradient(circle at top, rgba(31,60,136,0.4), transparent),
+    radial-gradient(circle at bottom, rgba(91,45,139,0.4), transparent);
+}
+
+.hero h2{
+  font-size:3rem;
+  animation:pulse 3s infinite;
+}
+
+.hero span{
+  color:var(--blanco);
+  display:block;
+  margin-top:1rem;
+  font-size:1.2rem;
+}
+
+@keyframes pulse{
+  0%,100%{text-shadow:0 0 10px var(--amarillo);}
+  50%{text-shadow:0 0 25px var(--amarillo);}
+}
+
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1.5rem;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
+  border-radius:15px;
+  padding:1.8rem;
+  transition:.4s;
+  box-shadow:0 0 15px rgba(0,0,0,.6);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 25px var(--azul);
+}
+
+/* FOOTER */
+footer{
+  background:#0a0a0a;
+  padding:2rem;
+  text-align:center;
+  font-size:.9rem;
+  opacity:.8;
+}
+
+/* CHATBOT */
+#chat-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:var(--amarillo);
+  color:#000;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow:0 0 20px var(--amarillo);
+  animation:glow 2s infinite;
+}
+
+@keyframes glow{
+  0%,100%{box-shadow:0 0 10px var(--amarillo);}
+  50%{box-shadow:0 0 30px var(--amarillo);}
+}
+
+#chatbox{
+  position:fixed;
+  bottom:90px;
+  right:20px;
+  width:320px;
+  max-height:420px;
+  background:rgba(18,18,18,0.95);
+  border-radius:15px;
+  display:none;
+  flex-direction:column;
+  overflow:hidden;
+  box-shadow:0 0 25px var(--violeta);
+}
+
+#chatbox header{
+  position:static;
+  background:var(--violeta);
+  padding:1rem;
+  text-align:center;
+}
+
+#chat-messages{
+  flex:1;
+  padding:1rem;
+  overflow-y:auto;
+  font-size:.9rem;
+}
+
+.message{ margin-bottom:.8rem; }
+.user{ color:var(--amarillo); }
+.bot{ color:var(--blanco); }
+
+#chat-input{
+  display:flex;
+}
+
+#chat-input input{
+  flex:1;
+  padding:.5rem;
+  border:none;
+}
+
+#chat-input button{
+  background:var(--amarillo);
+  border:none;
+  padding:.5rem 1rem;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <h1>LUMINA</h1>
+    <ul>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#mision">Misión & Visión</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Lumina Studios</h2>
+  <span>Historias que se juegan. Juegos que se recuerdan.</span>
+</section>
+
+<section id="nosotros">
+  <h2>¿Quiénes somos?</h2>
+  <p>
+    Lumina Studios es una empresa de entretenimiento digital especializada en la creación de videojuegos,
+    producciones cinematográficas y experiencias narrativas interactivas. Nacemos con el objetivo de
+    unir el lenguaje del cine con la interactividad del videojuego, desarrollando contenidos que no solo
+    entretienen, sino que generan experiencias memorables.
+  </p>
+  <p>
+    Nuestro enfoque se basa en el storytelling, la innovación tecnológica y el diseño visual de alto impacto.
+    Creemos que el entretenimiento es una forma poderosa de comunicación capaz de conectar emocionalmente
+    con las personas y transmitir mensajes, valores e identidad cultural.
+  </p>
+</section>
+
+<section id="mision">
+  <h2>Misión, Visión y Valores</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Misión</h3>
+      <p>
+        Crear experiencias de entretenimiento digital innovadoras y significativas, mediante el desarrollo
+        de videojuegos y producciones audiovisuales que conecten emocionalmente con las personas, fomenten
+        la creatividad y aporten valor cultural.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Visión</h3>
+      <p>
+        Ser una empresa líder en entretenimiento digital en Latinoamérica, reconocida por la calidad de sus
+        producciones, su innovación tecnológica y su capacidad de contar historias que trascienden formatos
+        y fronteras.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Valores</h3>
+      <p>
+        Creatividad, calidad, innovación, trabajo en equipo, responsabilidad social y pasión por el
+        entretenimiento digital.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <h2>Servicios</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Desarrollo de videojuegos</h3>
+      <p>
+        Diseñamos y desarrollamos videojuegos para PC, consolas y dispositivos móviles, priorizando la
+        jugabilidad, la narrativa y la experiencia del usuario.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Producción audiovisual</h3>
+      <p>
+        Creamos contenidos cinematográficos y audiovisuales que complementan proyectos digitales y
+        fortalecen la identidad visual de marcas y productos.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Narrativas interactivas</h3>
+      <p>
+        Desarrollamos historias interactivas donde el usuario participa activamente en la toma de decisiones
+        y construcción del relato.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Animación y efectos visuales</h3>
+      <p>
+        Diseñamos animaciones digitales, motion graphics y efectos visuales para videojuegos, cine y
+        plataformas digitales.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Realidad virtual y aumentada</h3>
+      <p>
+        Creamos experiencias inmersivas utilizando tecnologías de realidad virtual y aumentada para fines
+        de entretenimiento, educación y marketing.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="equipo">
+  <h2>Equipo de trabajo</h2>
+  <p>
+    Lumina Studios está conformado por un equipo multidisciplinario de guionistas, desarrolladores,
+    diseñadores, animadores y productores audiovisuales que comparten una visión creativa común y una
+    fuerte pasión por la innovación digital.
+  </p>
+</section>
+
+<section id="contacto">
+  <h2>Contacto</h2>
+  <p>📍 Av. Creatividad 456, Arequipa, Perú</p>
+  <p>📞 +51 987 654 321</p>
+  <p>✉️ contacto@luminastudios.pe</p>
+</section>
+
+<footer>
+  © 2025 Lumina Studios — Todos los derechos reservados
+</footer>
+
+<!-- CHATBOT -->
+<div id="chat-btn">🤖</div>
+
+<div id="chatbox">
+  <header>LUMI • Asistente IA</header>
+  <div id="chat-messages">
+    <div class="message bot">
+      Hola 👋 Soy LUMI. Puedo contarte más sobre Lumina Studios, nuestros servicios o cómo contactarnos.
+    </div>
+  </div>
+  <div id="chat-input">
+    <input type="text" id="userInput" placeholder="Escribe aquí...">
+    <button onclick="sendMessage()">Enviar</button>
+  </div>
+</div>
+
+<script>
+const chatBtn = document.getElementById("chat-btn");
+const chatBox = document.getElementById("chatbox");
+
+chatBtn.onclick = () => {
+  chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
+};
+
+function sendMessage(){
+  const input = document.getElementById("userInput");
+  const msg = input.value.trim();
+  if(!msg) return;
+
+  const chat = document.getElementById("chat-messages");
+  chat.innerHTML += `<div class="message user">Tú: ${msg}</div>`;
+
+  let response = "Puedo ayudarte con información sobre la empresa o sus servicios.";
+
+  if(msg.toLowerCase().includes("empresa"))
+    response = "Lumina Studios crea videojuegos, cine y experiencias interactivas con enfoque narrativo.";
+  if(msg.toLowerCase().includes("servicio"))
+    response = "Ofrecemos videojuegos, producción audiovisual, animación y experiencias VR/AR.";
+  if(msg.toLowerCase().includes("contacto"))
+    response = "Puedes escribirnos a contacto@luminastudios.pe o llamarnos al +51 987 654 321.";
+
+  chat.innerHTML += `<div class="message bot">LUMI: ${response}</div>`;
+  input.value="";
+  chat.scrollTop = chat.scrollHeight;
+}
+</script>
+
+</body>
+</html>
+
